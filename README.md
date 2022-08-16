@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+A beautiful CRUD APPLICATION, using Redux RTK Query, in getting requests from a j.son server, here we are able to use the Rtk query.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+created a file for the apiSlice called apiSlice.js, where we made use of the createApi and fetchBaseQuery imported from reduxjs/toolkit/query/react"
 
-## Available Scripts
+in the createApi we have the following  as objects
+ - reducerPath as key and 'api' as value
 
-In the project directory, you can run:
+ - we have the baseQuery as key and 'fetchBaseQuery({baseUrl:"http:....})' we use this to fetch the data from the         json-server
 
-### `npm start`
+ -tagTypes - An array of string tag type names. Specifying tag types is optional, but you should define them so that they can be used for caching and invalidation. When defining a tag type, you will be able to provide them with providesTags and invalidate them with invalidatesTags when configuring endpoints.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ -endpoints - in the endpoints we have the different functions, here we have the CRUD functions,
+   -getTodo
+   -addTodo
+   -deleteTodo
+   -updateTodo, all individual have objects like;
+      - query: () => "/todos",
+      - transformResponse: res => res.sort((a,b) => b.id - a.id) // to sort the list in a descending order
+      - providesTags:['Todo]
+        - we used the providesTags: ['Todos'],Used by query endpoints. Determines which 'tag' is attached to the cached data returned by the query. Expects an array of tag type strings, an array of objects of tag types with ids, or a function that returns such an array.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+this was a beautiful built, take advantage of RTK query generated custom hooks and also the transformResponse, here we can be creative with the data we get or post to our api.... 
 
-### `npm test`
+So in this App We can basically Read, Add, Update and Delete .. A full CRUD application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
